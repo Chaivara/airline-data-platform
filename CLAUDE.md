@@ -11,15 +11,9 @@ what's specific to airline-data-platform. Private infra pointers (VM, hosts, key
 
 See [ADR 012](docs/adr/012-github-flow-branch-merge.md) for the full decision (feature branches + squash-merge).
 
-- **Feature branch + Pull Request required — never push directly to `main`.** Every change goes
-  through a PR, reviewed by a second team member.
-- **Squash and merge** is the team's default merge strategy (one commit per PR, linear history).
-- `main` is always deployable. Use `feature/` · `fix/` · `chore/` branches; delete after merge.
-- **Claude: never merge a PR without asking first, even a small, clean, already-tested hotfix.**
-  Being "clearly correct" is not sufficient justification to merge autonomously — ask every time,
-  no exceptions. (Grew out of PR #24: a standalone hotfix got merged on sight because it looked
-  safe, which turned out not to be the right call — the fix belonged inside the larger #23 effort
-  instead, and had to be reverted via PR #25.)
+- Feature branch + PR; **never push to `main`**. You review and merge your own PRs.
+- Squash-and-merge. Branches: `feature/` · `fix/` · `chore/`; delete after merge.
+- **Claude: never merge a PR without asking first**, however small or clearly correct.
 
 ---
 
@@ -27,13 +21,8 @@ See [ADR 012](docs/adr/012-github-flow-branch-merge.md) for the full decision (f
 
 **Secrets:**
 - Never commit secrets. `.env` lives at the project root and is gitignored.
-- No real credentials, IPs, hostnames, or other private infra in tracked files — pointers go in
-  `CLAUDE.local.md`. **This has already leaked three times** (ADR 007 and ADR 014 both had the real
-  VM IPv4/IPv6 and Supabase project ref in prose, fixed 2026-07-02; the Q-VM static IP also made it
-  into a public GitHub Project draft issue body, fixed same-session 2026-07-13) — the check applies
-  to **any publish action, not just commits**: grep ADRs for real IPs/hostnames/project-refs before
-  committing, and re-read draft issues/PR descriptions/comments for the same before posting, don't
-  rely on remembering the rule.
+- No real credentials, IPs, hostnames or project refs in tracked files — pointers go in
+  `CLAUDE.local.md`. Check for them before **any** publish: commit, PR, issue, draft or comment.
 
 **Coding standards:**
 - Python 3.12+, type hints, `pathlib`, logging instead of `print()`.
@@ -44,7 +33,7 @@ See [ADR 012](docs/adr/012-github-flow-branch-merge.md) for the full decision (f
 **`docs/architecture/` describes current state only:**
 - No "Phase N 🚧" / planned-vs-✅ framing mixed into the prose — describe what runs *today*. Future
   work (unbuilt models, scheduler, CI/CD, …) belongs as draft issues in the
-  [GitHub Project](https://github.com/users/MatthiasSails/projects/1), not duplicated here where it
+  [GitHub Project](https://github.com/users/Chaivara/projects/1), not duplicated here where it
   goes stale.
 - No incident narratives ("X crashed for 3 days, fixed in #N") — that's implementation history, not
   architecture. It belongs in the PR description and `CLAUDE.local.md`, not in `docs/architecture/`.
