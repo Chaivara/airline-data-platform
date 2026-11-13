@@ -109,7 +109,9 @@ try:
         host=os.environ["SUPABASE_DB_URL"],
         port=5432,
         database="postgres",
-        user="postgres",  # Direct Connection (port 5432) — not the Supavisor pooler user format
+        # Direct connection uses "postgres"; the Supavisor pooler needs "postgres.<project-ref>".
+        # Defaults to "postgres" so the existing deployed stacks keep working unchanged.
+        user=os.environ.get("SUPABASE_DB_USER", "postgres"),
         password=os.environ["SUPABASE_DB_PASSWORD"]
     )
     cur = conn.cursor()
