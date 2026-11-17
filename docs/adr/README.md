@@ -22,6 +22,7 @@ Each ADR documents one significant decision: the context, the choice, the altern
 | [015](015-etl-scheduling-docker-loop.md) | ETL Scheduling Stays a Docker Loop, Not systemd | Accepted | 2026-07-01 |
 | [018](018-mono-repo.md) | Mono-Repo: Application Code, Deployment Config, and Infrastructure in One Repository | Accepted | 2026-07-05 |
 | [019](019-cloudflare-tunnel-ingress.md) | Cloudflare Tunnel as the Only Ingress; No Reverse Proxy, No Inbound Web Ports | Accepted | 2026-07-05 |
+| [020](020-bronze-ttl-index-manual-atlas.md) | 24-Hour TTL on Bronze Collections, Created Manually in Atlas | Accepted | 2026-11-17 |
 
 > Numbering gaps (013, 016, 017) are ADRs still in local draft state (`*.draft.md`, gitignored) —
 > a draft reserves its number when writing starts and appears here once promoted via its own PR.
