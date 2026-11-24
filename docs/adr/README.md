@@ -47,3 +47,6 @@ Do **not** write ADRs for:
 - Reversible coding decisions (variable names, function signatures)
 - Routine library upgrades
 - Implementation details that are obvious from the code
+
+An ADR records the **why**. Commands and step-by-step procedures go in the matching how-to doc
+(for example [mongodb-access.md](../mongodb-access.md)); link the two both ways.
